@@ -1,11 +1,11 @@
 {
     "rules" : [
         {
-            "pathPattern": "/build-blink",
+            "pathPattern": "/api/build-blink",
             "apiPath": "/api/build-blink"
         },
         {
-            "pathPattern": "/blinks/*",
+            "pathPattern": "/api/blinks/*",
             "apiPath": "/api/blinks/*"
         }
     ]

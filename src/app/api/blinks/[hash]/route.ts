@@ -20,7 +20,7 @@ export const GET = async (req: Request) => {
         title: `${action.title} ${action.value}`,
     }
 
-    return Response.json(payload);
+    return Response.json(payload, { headers: ACTIONS_CORS_HEADERS });
 }
 
 export const OPTIONS = GET;

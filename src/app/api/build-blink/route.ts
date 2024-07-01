@@ -2,10 +2,10 @@ import { putData } from "@/db";
 import { ACTIONS_CORS_HEADERS, ActionGetResponse, ActionPostRequest, ActionPostResponse, createPostResponse } from "@solana/actions";
 import { ComputeBudgetProgram, Connection, LAMPORTS_PER_SOL, PublicKey, SystemProgram, Transaction, clusterApiUrl } from "@solana/web3.js";
 
-const generateHashURL = (url: string): string => {
+const generateHashURL = (): string => {
     const dateTime = new Date().toISOString();
     const salt = Math.random().toString(2).substring(2, 30);
-    return new URL(`/api/blinks/${btoa(dateTime + salt)}`, new URL(url).origin).toString();
+    return new URL(`https://blinkbuilder.onrender.com/api/blinks/${btoa(dateTime + salt)}`).toString();
 }
 
 const getHashFromURL = (url: string): string => {
@@ -33,7 +33,7 @@ export const GET = (req: Request) => {
     const payload: ActionGetResponse = {
         icon: new URL("https://blinkbuilder.onrender.com/logo.png").toString(),
         label: 'Get Your Blink!',
-        description: `Provide Title, Description, Label & Price in comma seprated text.`,
+        description: `Provide Title, Description, Label & Price in comma seprated text. Supports Transfers for now`,
         title: 'Build Your Blink for optional 14 cents',
         links: {
             actions: [
@@ -59,7 +59,7 @@ export const OPTIONS = GET;
 
 export const POST = async (req: Request) => {
     try{
-        const randomHashURL = generateHashURL(new URL(req.url).origin.toString());
+        const randomHashURL = generateHashURL();
         const message = `Your Blink URL will be ${randomHashURL}`;
         const hash = getHashFromURL(randomHashURL);
         const details = new URLSearchParams(new URL(req.url).searchParams).get('details');

@@ -17,7 +17,7 @@ export const GET = async (req: Request) => {
         icon: new URL("https://blinkbuilder.onrender.com/logo.png").toString(),
         label: action.label,
         description: action.description,
-        title: `${action.title} ${action.value}`,
+        title: `${action.title}`,
     }
 
     return Response.json(payload, { headers: ACTIONS_CORS_HEADERS });

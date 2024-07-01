@@ -14,7 +14,7 @@ export const GET = async (req: Request) => {
     }
 
     const payload: ActionGetResponse = {
-        icon: new URL("/logo.png", new URL(req.url).origin).toString(),
+        icon: new URL("https://blinkbuilder.onrender.com/logo.png").toString(),
         label: action.label,
         description: action.description,
         title: `${action.title} ${action.value}`,

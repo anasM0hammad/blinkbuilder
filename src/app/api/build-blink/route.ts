@@ -31,7 +31,7 @@ const getDetails = (data: string) => {
 export const GET = (req: Request) => {
     
     const payload: ActionGetResponse = {
-        icon: new URL("/logo.png", new URL(req.url).origin).toString(),
+        icon: new URL("https://blinkbuilder.onrender.com/logo.png").toString(),
         label: 'Get Your Blink!',
         description: `Provide Title, Description, Label & Price in comma seprated text.`,
         title: 'Build Your Blink for optional 14 cents',

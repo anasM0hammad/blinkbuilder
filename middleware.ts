@@ -16,7 +16,7 @@ export function middleware(request: NextRequest) {
 
 	if (isPreflight) {
 		const preflightHeaders = {
-			...({ 'Access-Control-Allow-Origin': origin }),
+			...({ 'Access-Control-Allow-Origin': '*' }),
 			...corsOptions,
 		}
 		return NextResponse.json({}, { headers: preflightHeaders })
@@ -25,7 +25,7 @@ export function middleware(request: NextRequest) {
 	// Handle simple requests
 	const response = NextResponse.next()
 
-	response.headers.set('Access-Control-Allow-Origin', origin)
+	response.headers.set('Access-Control-Allow-Origin', '*')
 
 	Object.entries(corsOptions).forEach(([key, value]) => {
 		response.headers.set(key, value)
